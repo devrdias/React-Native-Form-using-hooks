@@ -7,38 +7,36 @@ import { useState, useEffect } from 'react';
 
 const useLoginForm = (callback, validate) => {
 	const [values, setValues] = useState({});
+	const [message, setMessage] = useState('');
 	const [errors, setErrors] = useState({});
-	const [isLoggedIn, setIsLoggedIn] = useState(false);
 	const [isSubmitting, setIsSubmitting] = useState(false);
 
 	// useEffect replaces the componentDidMount and componentDidUpdate lifecyle methods in React Class components
 	useEffect(() => {
-		debugger;
-		if (Object.keys(errors).length === 0 && isSubmitting && !isLoggedIn) {
+		if (Object.keys(errors).length === 0) {
 			callback();
 		}
-		setIsSubmitting(false);
 	}, [errors]);
 
 	handleSubmit = () => {
-		debugger;
-		setIsSubmitting(true); // prevents the Form from submiting on Render
-		console.debug(values);
+		setIsSubmitting(true);
 		setErrors(validate(values));
 	};
 
-	handleOnChangeValue = fieldName => text => {
-		setValues({ ...values, [fieldName]: text });
+	handleOnChangeValue = value => {
+		setValues(value);
+	};
+	handleOnlogin = message => {
+		setMessage(message);
 	};
 
 	return {
 		values,
+		message,
 		errors,
-		isLoggedIn,
 		isSubmitting,
 		handleOnChangeValue,
-		handleSubmit,
-		setIsLoggedIn
+		handleOnlogin
 	};
 };
 

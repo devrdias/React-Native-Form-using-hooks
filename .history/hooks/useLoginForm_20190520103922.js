@@ -14,10 +14,10 @@ const useLoginForm = (callback, validate) => {
 	// useEffect replaces the componentDidMount and componentDidUpdate lifecyle methods in React Class components
 	useEffect(() => {
 		debugger;
-		if (Object.keys(errors).length === 0 && isSubmitting && !isLoggedIn) {
+		if (Object.keys(errors).length === 0 && isSubmitting) {
 			callback();
+			setIsLoggedIn(true);
 		}
-		setIsSubmitting(false);
 	}, [errors]);
 
 	handleSubmit = () => {
@@ -33,12 +33,11 @@ const useLoginForm = (callback, validate) => {
 
 	return {
 		values,
+		message,
 		errors,
-		isLoggedIn,
 		isSubmitting,
 		handleOnChangeValue,
-		handleSubmit,
-		setIsLoggedIn
+		handleSubmit
 	};
 };
 

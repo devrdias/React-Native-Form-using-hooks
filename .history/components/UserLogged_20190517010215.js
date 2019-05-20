@@ -1,5 +1,7 @@
 import { React } from 'react';
 
-const UserLogged = () => {};
+const UserLogged = props => {
+	return <View />;
+};
 
 export default UserLogged;

@@ -16,8 +16,8 @@ const useLoginForm = (callback, validate) => {
 		debugger;
 		if (Object.keys(errors).length === 0 && isSubmitting && !isLoggedIn) {
 			callback();
+			setIsLoggedIn(true);
 		}
-		setIsSubmitting(false);
 	}, [errors]);
 
 	handleSubmit = () => {
@@ -33,12 +33,11 @@ const useLoginForm = (callback, validate) => {
 
 	return {
 		values,
+		message,
 		errors,
-		isLoggedIn,
 		isSubmitting,
 		handleOnChangeValue,
-		handleSubmit,
-		setIsLoggedIn
+		handleSubmit
 	};
 };
 

@@ -7,10 +7,13 @@
  */
 
 import { Body, Container, Content, Header, Left, Right, Subtitle, Title } from 'native-base';
-import React from 'react';
+import React, { useState } from 'react';
 import LoginForm from './components/LoginForm';
+import useUserLogged from './hooks/useUserLogged';
 
 const App = () => {
+	const { message, handleLogin } = useUserLogged;
+
 	return (
 		<Container>
 			<Header noShadow hasSubtitle>

@@ -7,10 +7,14 @@
  */
 
 import { Body, Container, Content, Header, Left, Right, Subtitle, Title } from 'native-base';
-import React from 'react';
+import React, { useState } from 'react';
 import LoginForm from './components/LoginForm';
+import useUserLogged from './hooks/useUserLogged';
+import UserLogged from './components/UserLogged';
 
 const App = () => {
+	const { message } = useUserLogged;
+
 	return (
 		<Container>
 			<Header noShadow hasSubtitle>
@@ -25,6 +29,7 @@ const App = () => {
 			</Header>
 			<Content>
 				<LoginForm />
+				<UserLogged message />
 			</Content>
 		</Container>
 	);

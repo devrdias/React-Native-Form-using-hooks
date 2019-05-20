@@ -15,9 +15,11 @@ const useLoginForm = (callback, validate) => {
 	useEffect(() => {
 		debugger;
 		if (Object.keys(errors).length === 0 && isSubmitting && !isLoggedIn) {
+			console.log('entrou aqui');
 			callback();
+			setIsLoggedIn(true);
+			setIsSubmitting(false);
 		}
-		setIsSubmitting(false);
 	}, [errors]);
 
 	handleSubmit = () => {
@@ -25,6 +27,9 @@ const useLoginForm = (callback, validate) => {
 		setIsSubmitting(true); // prevents the Form from submiting on Render
 		console.debug(values);
 		setErrors(validate(values));
+		if (erros) {
+			setIsSubmitting(false);
+		}
 	};
 
 	handleOnChangeValue = fieldName => text => {
@@ -37,8 +42,7 @@ const useLoginForm = (callback, validate) => {
 		isLoggedIn,
 		isSubmitting,
 		handleOnChangeValue,
-		handleSubmit,
-		setIsLoggedIn
+		handleSubmit
 	};
 };
 

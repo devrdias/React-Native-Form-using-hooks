@@ -88,7 +88,7 @@ const LoginForm = () => {
 				}}
 			>
 				<Text style={{ textAlign: 'center', fontSize: 30 }}>{message}</Text>
-				<Text style={{ textAlign: 'center', fontSize: 20, padding: 20 }}>{message2}</Text>
+				<Text style={{ textAlign: 'center', fontSize: 20 }}>{message2}</Text>
 			</View>
 		);
 	};

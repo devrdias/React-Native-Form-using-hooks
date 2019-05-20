@@ -5,7 +5,7 @@ import useLoginForm from '../hooks/useLoginForm';
 import validate from './LoginFormValidationRules';
 
 const LoginForm = () => {
-	const message = 'React Hooks Rocks !!!';
+	const message = 'You have just logged in ! React Hooks Rocks !!!';
 	const message2 =
 		'React Hooks let you use state and lifee-cycle methods without writing a Class component!';
 
@@ -88,7 +88,7 @@ const LoginForm = () => {
 				}}
 			>
 				<Text style={{ textAlign: 'center', fontSize: 30 }}>{message}</Text>
-				<Text style={{ textAlign: 'center', fontSize: 20, padding: 20 }}>{message2}</Text>
+				<Text style={{ textAlign: 'center', fontSize: 20 }}>{message2}</Text>
 			</View>
 		);
 	};

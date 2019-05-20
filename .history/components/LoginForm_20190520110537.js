@@ -5,7 +5,7 @@ import useLoginForm from '../hooks/useLoginForm';
 import validate from './LoginFormValidationRules';
 
 const LoginForm = () => {
-	const message = 'React Hooks Rocks !!!';
+	const message = 'You have just logged in ! React Hooks Rocks !!!';
 	const message2 =
 		'React Hooks let you use state and lifee-cycle methods without writing a Class component!';
 
@@ -24,26 +24,12 @@ const LoginForm = () => {
 	} = useLoginForm(login, validate);
 
 	const renderLoading = () => {
-		return (
-			<View
-				style={{
-					position: 'absolute',
-					left: 0,
-					right: 0,
-					top: 0,
-					bottom: 0,
-					alignItems: 'center',
-					justifyContent: 'center'
-				}}
-			>
-				<ActivityIndicator size="large" color="#482fff" />
-			</View>
-		);
+		return <ActivityIndicator size="small" color="#482fff" />;
 	};
 
 	const renderLoginForm = () => {
 		return (
-			<Form>
+			<View>
 				<View style={{ padding: 40 }}>
 					<Item floatingLabel error={errors.email ? true : false}>
 						<Label style={{ paddingTop: 2 }}>Username</Label>
@@ -74,30 +60,24 @@ const LoginForm = () => {
 						<Text>Login</Text>
 					</Button>
 				</View>
-			</Form>
-		);
-	};
-
-	renderWelcomeMessage = () => {
-		return (
-			<View
-				style={{
-					flex: 1,
-					justifyContent: 'center',
-					paddingTop: 30
-				}}
-			>
-				<Text style={{ textAlign: 'center', fontSize: 30 }}>{message}</Text>
-				<Text style={{ textAlign: 'center', fontSize: 20, padding: 20 }}>{message2}</Text>
 			</View>
 		);
 	};
 
 	return (
-		<View style={{ flex: 1, justifyContent: 'center' }}>
+		<Form>
+			{console.log('isSubmitting', isSubmitting)}
 			{isSubmitting && renderLoading()}
-			{isLoggedIn ? renderWelcomeMessage() : renderLoginForm()}
-		</View>
+
+			{isLoggedIn ? (
+				<View style={{ justifyContent: 'center', flex: 1 }}>
+					<Text style={{ textAlign: 'center' }}>{message}</Text>
+					<Text style={{ textAlign: 'center' }}>{message2}</Text>
+				</View>
+			) : (
+				renderLoginForm()
+			)}
+		</Form>
 	);
 };
 
